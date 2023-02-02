@@ -1,0 +1,47 @@
+<h2 class="screen-align">Searchsaleforce</h2>
+<div id="template-i0cn" class="gjs-row">
+    <div id="template-ite4" class="gjs-cell">
+        <label id="template-iauh" class="label ">Label</label>
+        <input id="template-ig92" [(ngModel)]="testapp.name" [ngModelOptions]="{standalone: true}"
+        ngDefaultControl class="input form-control " />
+    </div>
+    <div id="template-ib0h" class="gjs-cell">
+        <label id="template-ix0j" class="label ">Label</label>
+        <input id="template-ixpyg" [(ngModel)]="testapp.test" [ngModelOptions]="{standalone: true}"
+        ngDefaultControl class="input form-control " />
+    </div>
+</div>
+<div name="grid_template-icb8" class="">
+    <div class="tableBg">
+        <table id="table" class="table table-bordered  table-striped table-curved"
+        data-show-header="true" data-pagination="true" data-id-field="name">
+            <thead class="table table-hover">
+                <tr>
+                    <th *ngFor="let column of columnDefs">{{column.headerName}}</th>
+                </tr>
+            </thead>
+            <tbody class="table-design" *ngIf="rowData.length==0">
+                <td style="text-align: center;" colspan="5">No Data Found</td>
+            </tbody>
+            <tbody class="table-design" *ngIf="rowData.length>0">
+                <tr *ngFor="let values of rowData | slice: (page-1) * paginationPageSize :(page-1) * paginationPageSize + paginationPageSize">
+                    <td>{{ values.name }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="bottomPage">
+        <div class="text-right">
+            <ngb-pagination class="d-flex justify-content-start" [(page)]="page" [maxSize]="5"
+            [rotate]="true" [pageSize]="paginationPageSize" [collectionSize]="rowData.length"
+            [boundaryLinks]="true"></ngb-pagination>
+        </div>
+    </div>
+    <div id="myGrid" class=""></div>
+</div>
+<div id="myGrid" class="ag-theme-alpine "></div>
+<div id="template-i2z7h" class="gjs-row">
+    <div id="template-ix8xn" class="gjs-cell">
+        <div id="template-i3u6e" (click)="GpSearch()" class="button btn btn-primary ">Send</div>
+    </div>
+</div>

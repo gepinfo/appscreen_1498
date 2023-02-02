@@ -1,0 +1,169 @@
+---
+openapi: 3.0.0
+info:
+   version: 1.3.0
+   title: appscreen open api specification
+   description: testapp API
+   termsOfService: http://api_url/terms/
+   contact:
+      name: ContactName
+      email: hello@wolox.co
+      url: https://www.wolox.com.ar/
+   license:
+      name: Apache 2.0
+      url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+   - url: http://localhost:8011
+     description: testapp
+tags:
+- name: testapp
+paths:
+   "/testapp/{id}":
+      delete:
+         tags:
+         -  testapp
+         description: GpDelete
+         parameters:
+         -  in: "path"
+            description: GpDelete
+            name: id
+            required: true
+            schema:
+               type: "string"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      get:
+         tags:
+         -  testapp
+         description: GpGetNounById
+         parameters:
+         -  in: "path"
+            description: GpGetNounById
+            name: id
+            required: true
+            schema:
+               type: "string"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/testapp/get/search":
+      get:
+         tags:
+         -  testapp
+         description: GpSearch
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/testapp/get/update":
+      put:
+         tags:
+         -  testapp
+         description: GpSearchForUpdate
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/testapp"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/testapp":
+      put:
+         tags:
+         -  testapp
+         description: GpUpdate
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/testapp"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      get:
+         tags:
+         -  testapp
+         description: GpGetAllValues
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+      post:
+         tags:
+         -  testapp
+         description: GpCreate
+         requestBody:
+            content:
+               application/json:
+                  schema:
+                     $ref: "#/components/schemas/testapp"
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+   "/testapp/userid/created_by":
+      get:
+         tags:
+         -  testapp
+         description: GpGetNounCreatedBy
+         responses:
+            200:
+               description: Success
+            400:
+               description: Bad Request
+            404:
+               description: Not Found
+            500:
+               description: Internal Server Error
+components:
+   schemas:
+      testapp:
+         type: object
+         properties:
+            name:
+               type: "string"
+               description: Description
+            test:
+               type: "string"
+               description: Description
